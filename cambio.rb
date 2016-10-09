@@ -3,15 +3,21 @@
 require 'nmatrix'
 
 class Money
-  def minimize matrix
-    first = matrix - matrix.transpose
-    first = first.triu(-1)
+  def initialize nmatrix
+    @a = nmatrix
   end
 
-  def answer matrix,dim
+  def minimize 
+    minimized = @a - @a.transpose
+    minimized.triu(-1)
+  end
+
+  def answer
+    min = minimize
+    dim = @a.rows
     arr = Array.new
     (0..dim-1).each do |i|
-      arr << matrix.slice(0..i,i+1..dim-1).reduce(:+)
+      arr << min.slice(0..i,i+1..dim-1).reduce(:+)
     end
     arr.compact
   end

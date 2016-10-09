@@ -9,10 +9,9 @@ arr = Array.new
 arr << gets.chomp.split(',').map(&:to_i)
 mat = N[arr].reshape([d,d])
 
-mon = Money.new
+mon = Money.new(mat)
 
-x = mon.minimize(mat)
-y = mon.answer(x,d)
+y = mon.answer
 y.count.times do |i|
   puts "#{(97+i).chr} to #{(98+i).chr} : #{y[i]}"
 end
