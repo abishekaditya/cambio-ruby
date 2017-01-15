@@ -13,8 +13,7 @@ class Money
   end
 
   def answer
-    min = minimize
-    dim = @a.rows
+    min = minimize, dim = @a.rows
     arr = Array.new
     (0..dim-1).each do |i|
       arr << min.slice(0..i,i+1..dim-1).reduce(:+)
